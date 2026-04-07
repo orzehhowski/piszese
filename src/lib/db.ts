@@ -11,7 +11,7 @@ export const posts = sqliteTable('posts', {
   subtitle: text('subtitle'),
   content: text('content').notNull(), // Tu trafia Markdown
   excerpt: text('excerpt'),
-  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()).notNull(),
 });
 
 const sqlite = new Database('./data/sqlite.db');

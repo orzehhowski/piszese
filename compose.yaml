@@ -1,0 +1,35 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - node-util
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - /app/.next
+      - ./data:/app/data # Tutaj będzie przechowywany plik bazy danych .db
+    environment:
+      - DATABASE_URL=file:./data/sqlite.db
+      - NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY=${NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY}
+      - CLOUDFLARE_TURNSTILE_SECRET_KEY=${CLOUDFLARE_TURNSTILE_SECRET_KEY}
+      - NODE_ENV=production
+      # Limitujemy RAM dla Node.js, żeby nie zabił VPS-a
+      # - NODE_OPTIONS=--max-old-space-size=384
+    restart: always
+  node-util:
+    build:
+      context: .
+      dockerfile: Dockerfile.node-util
+    volumes:
+      - .:/workdir
+      - node_modules:/workdir/node_modules
+    working_dir: /workdir
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:

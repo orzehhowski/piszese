@@ -75,6 +75,7 @@ export const posts = sqliteTable("posts", {
 ## 🚦 Boundaries & Rules
 - ✅ **Always:** Use `--profile util` for any `npm` or `npx` command.
 - ✅ **Always:** Organize Tailwind classes: Layout → Typography → Interactive states.
+- ✅ **Always:** Write site's content in polish language.
 - ⚠️ **Ask first:** Before changing database engines or modifying `compose.yaml`.
 - 🚫 **Never:** Run `npm install` on the host OS (breaks `better-sqlite3` bindings).
 - 🚫 **Never:** Commit `.env` or `.env.local` files.

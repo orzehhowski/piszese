@@ -11,15 +11,6 @@ export default function Header() {
           </div>
           <span className="text-lg font-semibold tracking-tight">Blog</span>
         </Link>
-
-        <nav className="flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-400">
-          <Link href="/" className="hover:text-gray-900 dark:hover:text-white">
-            Home
-          </Link>
-          <Link href="/tekscik" className="hover:text-gray-900 dark:hover:text-white">
-            Articles
-          </Link>
-        </nav>
       </div>
     </header>
   );

@@ -1,4 +1,5 @@
-import { db, posts } from '@/lib/db';
+import { db } from '@/lib/db';
+import { posts } from '@/lib/schema';
 import { eq } from 'drizzle-orm';
 import Markdown from '@/components/Markdown';
 import { notFound } from 'next/navigation';

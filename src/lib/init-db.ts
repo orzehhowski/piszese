@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import Database from 'better-sqlite3';
-import { posts } from './db';
+import { posts } from './schema';
 
 async function initDb() {
   const sqlite = new Database('./data/sqlite.db');

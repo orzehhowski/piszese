@@ -6,12 +6,15 @@ interface ArticleCardProps {
   title: string;
   subtitle: string;
   imageUrl: string;
+  isAdmin?: boolean;
 }
 
-export default function ArticleCard({ slug, title, subtitle, imageUrl }: ArticleCardProps) {
+export default function ArticleCard({ slug, title, subtitle, imageUrl, isAdmin = false }: ArticleCardProps) {
+  const href = isAdmin ? `/admin/${slug}` : `/tekscik/${slug}`;
+
   return (
     <Link
-      href={`/tekscik/${slug}`}
+      href={href}
       className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 transition-shadow hover:shadow-md dark:border-gray-800"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-900">

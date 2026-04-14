@@ -3,6 +3,8 @@ import { posts } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import ArticleForm from "@/components/ArticleForm";
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 export default async function EditArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -16,6 +18,13 @@ export default async function EditArticlePage({ params }: { params: Promise<{ sl
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
       <header className="mb-10">
+        <Link
+          href="/admin"
+          className="mb-4 inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Powrót do panelu
+        </Link>
         <h1 className="text-3xl font-bold tracking-tight text-white">Edytuj artykuł</h1>
         <p className="text-gray-400 mt-2">Dostosuj treść i ustawienia swojego wpisu.</p>
       </header>

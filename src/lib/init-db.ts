@@ -46,7 +46,20 @@ async function initDb() {
           0,
           Date.now(),
         );
-    console.log('✅ DB initialized with 2 sample posts');
+
+        sqlite.prepare(
+          `INSERT INTO posts (title, slug, subtitle, content, excerpt, header_image, is_draft, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        ).run(
+          'Tajny projekt w budowie',
+          'tajny-projekt',
+          'To jest szkic nowego wpisu',
+          '# To jest dopiero szkic!\n\nJeszcze nie publikujemy tego wpisu. Muszę dopisać:\n- Więcej detali o technologii\n- Jakieś ładne grafiki\n- Podsumowanie',
+          'Szkic artykułu o nowym projekcie.',
+          null,
+          1, // is_draft = true
+          Date.now(),
+        );
+    console.log('✅ DB initialized with 3 sample posts (including 1 draft)');
   } else {
     console.log('✅ DB already initialized, skipping seed');
   }

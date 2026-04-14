@@ -17,14 +17,18 @@ export default function ArticleCard({ slug, title, subtitle, headerImage, isAdmi
   return (
     <Link
       href={href}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 transition-shadow hover:shadow-md dark:border-gray-800"
+      className={`group relative flex flex-col overflow-hidden rounded-xl border transition-all hover:shadow-md ${
+        isDraft 
+          ? "border-orange-500/20 bg-orange-500/5 dark:border-orange-500/10 dark:bg-orange-950/10" 
+          : "border-gray-200 dark:border-gray-800"
+      }`}
     >
-      {isAdmin && isDraft && (
-        <div className="absolute top-2 right-2 z-10 rounded bg-zinc-900/80 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-orange-400 backdrop-blur-sm border border-orange-500/20">
+      {isDraft && (
+        <div className="absolute top-2 right-2 z-10 rounded-md bg-orange-600 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
           Szkic
         </div>
       )}
-      <div className="relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-900">
+      <div className={`relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${isDraft ? "opacity-60 grayscale-[0.5]" : ""}`}>
         <Image
           src={displayImage}
           alt={title}
@@ -34,7 +38,7 @@ export default function ArticleCard({ slug, title, subtitle, headerImage, isAdmi
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <h3 className="font-semibold tracking-tight text-gray-900 group-hover:underline dark:text-white">
+        <h3 className={`font-semibold tracking-tight group-hover:underline ${isDraft ? "text-orange-200/80" : "text-gray-900 dark:text-white"}`}>
           {title}
         </h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>

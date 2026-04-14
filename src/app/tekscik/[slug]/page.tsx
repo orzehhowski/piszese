@@ -4,6 +4,8 @@ import { eq, and } from 'drizzle-orm';
 import Markdown from '@/components/Markdown';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ChevronLeft } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -34,6 +36,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="max-w-3xl mx-auto py-10 px-4">
+      <Link
+        href="/"
+        className="mb-8 inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-white transition-colors"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        Powrót do strony głównej
+      </Link>
       {post.headerImage && (
         <div className="relative mb-8 aspect-video overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl">
           <Image

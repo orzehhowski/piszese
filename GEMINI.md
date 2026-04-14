@@ -14,6 +14,8 @@
 - **Lint Code:** `docker compose --profile util run --rm node-util npm run lint`
 - **Type Check:** `docker compose --profile util run --rm node-util npx tsc --noEmit`
 - **Database Studio:** `docker compose --profile util run --rm node-util npx drizzle-kit studio`
+- **Push Schema (Dev):** `docker compose --profile util run --rm node-util npx drizzle-kit push`
+- **Generate Migration:** `docker compose --profile util run --rm node-util npx drizzle-kit generate`
 
 ---
 

@@ -9,7 +9,9 @@ export const posts = sqliteTable('posts', {
   subtitle: text('subtitle'),
   content: text('content').notNull(), // Tu trafia Markdown
   excerpt: text('excerpt'),
-  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()).notNull(),
+  headerImage: text('header_image'),
+  isDraft: integer('is_draft', { mode: 'boolean' }).default(false).notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp_ms' }).$defaultFn(() => new Date()).notNull(),
 });
 
 export type Post = InferSelectModel<typeof posts>;

@@ -51,6 +51,8 @@ export async function PATCH(
         subtitle: body.subtitle,
         content: body.content,
         excerpt: body.excerpt,
+        headerImage: body.headerImage,
+        isDraft: body.isDraft,
       })
       .where(eq(posts.id, postId))
       .returning();

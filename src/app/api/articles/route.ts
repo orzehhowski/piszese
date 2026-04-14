@@ -30,6 +30,8 @@ export async function POST(request: Request) {
       subtitle: body.subtitle,
       content: body.content,
       excerpt: body.excerpt,
+      headerImage: body.headerImage,
+      isDraft: body.isDraft ?? false,
     }).returning();
 
     return NextResponse.json(newPost[0], { status: 201 });
